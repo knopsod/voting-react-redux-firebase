@@ -10,4 +10,4 @@ var config = {
 };
 firebase.initializeApp(config);
 
-export const database = firebase.database().ref('/votes');
+export const votes = firebase.database().ref('/votes');

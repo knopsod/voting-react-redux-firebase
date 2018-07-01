@@ -1,9 +1,9 @@
 import { GET_VOTES } from '../actionTypes';
-import { database } from '../firebase';
+import { votes } from '../firebase';
 
 export function getVotes() {
   return dispatch => {
-    database.on('value', snapshot => {
+    votes.on('value', snapshot => {
       dispatch({
         type: GET_VOTES,
         payload: snapshot.val()
@@ -13,5 +13,5 @@ export function getVotes() {
 };
 
 export function saveVote(vote) {
-  return dispatch => database.push(vote);
+  return dispatch => votes.push(vote);
 }

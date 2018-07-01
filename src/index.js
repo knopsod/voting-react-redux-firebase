@@ -15,12 +15,13 @@ import rootReducer from './reducers/index';
 // Create redux store -> reducers -> 'actions - actionType' | applyMiddleware();
 const store = createStore( 
   rootReducer, 
-  composeWithDevTools(applyMiddleware(thunk)) );
+  composeWithDevTools(applyMiddleware(thunk)) 
+);
 
 // Provide the store to react
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <App />
   </Provider>, 
   document.getElementById('root'));

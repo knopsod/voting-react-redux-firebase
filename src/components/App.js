@@ -10,8 +10,7 @@ class App extends Component {
     
     this.state = {
       title: '',
-      body: '',
-      votes: []
+      body: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -50,9 +49,10 @@ class App extends Component {
   renderVotes() {
     return _.map(this.props.votes, (vote, key) => {
       return (
-        <div key={key}>
-          <h2>{vote.title}</h2>
-          <p>{vote.body}</p>
+        <div key={ key }>
+          <h2>{ vote.title }</h2>
+          <p>{ vote.body }</p>
+          <p>{ vote.createdAt }</p>
         </div>
       );
     });
@@ -103,8 +103,7 @@ class App extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    votes: state.votes,
-
+    votes: state.votes
   }
 };
 
