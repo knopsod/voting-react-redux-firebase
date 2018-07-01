@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { database } from '../firebase';
 import _ from 'lodash';
 import * as moment from 'moment';
+import { connect } from 'react-redux';
+import { getVotes, saveVote } from '../actions/votesAction';
 
 class App extends Component {
   constructor(props) {
@@ -19,11 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    database.on('value', (snapshot) => {
-      this.setState({
-        votes: snapshot.val()
-      });
-    });
+    this.props.getVotes();
   }
 
   handleChange(e) {
@@ -42,7 +39,7 @@ class App extends Component {
       createdAt: moment.now()
     }
 
-    database.push(vote);
+    this.props.saveVote(vote);
 
     this.setState({
       title: '',
@@ -51,7 +48,7 @@ class App extends Component {
   }
 
   renderVotes() {
-    return _.map(this.state.votes, (vote, key) => {
+    return _.map(this.props.votes, (vote, key) => {
       return (
         <div key={key}>
           <h2>{vote.title}</h2>
@@ -102,6 +99,13 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
-export default App;
+function mapStateToProps(state, ownProps) {
+  return {
+    votes: state.votes,
+
+  }
+};
+
+export default connect(mapStateToProps, { getVotes, saveVote })(App);
