@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { googleLogin, twitterLogin } from '../actions/userAction';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="container-fluid">

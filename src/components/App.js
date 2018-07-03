@@ -110,7 +110,7 @@ class App extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     votes: state.votes,
-    user: state.user
+    user: state.user,
   }
 };
 

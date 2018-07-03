@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUser, logout } from '../actions/userAction';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <nav className="navbar navbar-default">
@@ -43,7 +40,6 @@ class Header extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log(state.user);
   return {
     user: state.user
   }
