@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
-import { getVotes, saveVote } from '../actions/votesAction';
+import { getVotes, saveVote, removeVote } from '../actions/votesAction';
+
+import VoteCard from './VoteCard';
 
 class App extends Component {
   constructor(props) {
@@ -49,11 +51,13 @@ class App extends Component {
   renderVotes() {
     return _.map(this.props.votes, (vote, key) => {
       return (
-        <div key={ key }>
+        <VoteCard key={ key }>
           <h2>{ vote.title }</h2>
           <p>{ vote.body }</p>
           <p>{ vote.createdAt }</p>
-        </div>
+          <button className="btn btn-danger btn-xs"
+            onClick={() => this.props.removeVote(key)}>Remove</button>
+        </VoteCard>
       );
     });
   }
@@ -107,4 +111,4 @@ function mapStateToProps(state, ownProps) {
   }
 };
 
-export default connect(mapStateToProps, { getVotes, saveVote })(App);
+export default connect(mapStateToProps, { getVotes, saveVote, removeVote })(App);
