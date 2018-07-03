@@ -14,6 +14,7 @@ import rootReducer from './reducers/index';
 
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
+import Header from './routes/Header';
 
 // Create redux store -> reducers -> 'actions - actionType' | applyMiddleware();
 const store = createStore( 
@@ -21,26 +22,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk)) 
 );
 
-const Header = () => (
-  <nav className="navbar navbar-default">
-    <div className="container-fluid">
-      <div className="navbar-header">
-        <button type="button" className="navbar-toggle" 
-          data-toggle="collapse"
-          data-target="#myNavbar">
-          <span className="icon-bar" />
-          <span className="icon-bar" />
-          <span className="icon-bar" />
-        </button>
 
-        <Link className="navbar-brand" to="/">
-          VOTING
-        </Link>
-        
-      </div>
-    </div>
-  </nav>
-);
 
 // Provide the store to react
 
@@ -52,6 +34,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/" component={App} exact={true} />
           <Route path="/login" component={Login} exact={true} />
+          <Route path="*" component={App} exact={true} />
         </Switch>
       </div>
     </BrowserRouter>

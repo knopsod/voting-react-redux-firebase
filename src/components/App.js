@@ -3,6 +3,7 @@ import _ from 'lodash';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
 import { getVotes, saveVote, removeVote } from '../actions/votesAction';
+import { getUser } from '../actions/userAction';
 
 import VoteCard from './VoteCard';
 
@@ -22,6 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getVotes();
+    this.props.getUser();
   }
 
   handleChange(e) {
@@ -107,8 +109,9 @@ class App extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    votes: state.votes
+    votes: state.votes,
+    user: state.user
   }
 };
 
-export default connect(mapStateToProps, { getVotes, saveVote, removeVote })(App);
+export default connect(mapStateToProps, { getVotes, saveVote, removeVote, getUser })(App);

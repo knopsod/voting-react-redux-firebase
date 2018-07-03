@@ -11,3 +11,7 @@ var config = {
 firebase.initializeApp(config);
 
 export const votesRef = firebase.database().ref('/votes');
+
+export const auth = firebase.auth();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const twitterProvider = new firebase.auth.TwitterAuthProvider();

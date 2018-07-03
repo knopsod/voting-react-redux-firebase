@@ -1,6 +1,5 @@
 import { GET_VOTES } from '../actionTypes';
 import { votesRef } from '../firebase';
-import { deleteVote } from './votesAction';
 
 export function getVotes() {
   return dispatch => {
